@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 /*
 Problem 18:
 Suppose you have n doctors, each of which are free for a certain number of hours per day,

@@ -7,9 +7,10 @@ namespace Day15
     {
         static void Main(string[] args)
         {
-            ShrinkableWords();
-            PeriodicTableWords();
-            PatientScheduler();
+            //ShrinkableWords();
+            //PeriodicTableWords();
+            //PatientScheduler();
+            RadioTowers();
         }
 
         // Problem 16
@@ -69,6 +70,28 @@ namespace Day15
 
             p1.Solve();
             p2.Solve();
+        }
+        // Problem 19
+        static void RadioTowers()
+        {
+            double[,] towers = {
+                { 11, 10 },
+                { 16, 16 },
+                { 3, 15 },
+                { 6, 17 },
+                { 10, 5 },
+                { 14, 11 },
+                { 5, 19 },
+                { 15, 18 },
+                { 17, 20 },
+                { 18, 22}
+             };
+            double d = 6.0;
+
+            var p1 = new RadioTowersProblem1(towers, d);
+
+            p1.Solve();
+
         }
     }
 }
