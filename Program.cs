@@ -47,18 +47,18 @@ namespace Day15
             var p1_2 = new PeriodicTableWordsProblem1(word2);
             var p1_3 = new PeriodicTableWordsProblem1(word3);
 
-            //var p2_1 = new PeriodicTableWordsProblem1(word1);
-            //var p2_2 = new PeriodicTableWordsProblem1(word2);
-            //var p2_3 = new PeriodicTableWordsProblem1(word3);
+            var p2_1 = new PeriodicTableWordsProblem2(word1);
+            var p2_2 = new PeriodicTableWordsProblem2(word2);
+            var p2_3 = new PeriodicTableWordsProblem2(word3);
 
             // solve the problem
             p1_1.Solve();
             p1_2.Solve();
             p1_3.Solve();
 
-            //p2_1.Solve();
-            //p2_2.Solve();
-            //p2_3.Solve();
+            p2_1.Solve();
+            p2_2.Solve();
+            p2_3.Solve();
         }
     }
 }
