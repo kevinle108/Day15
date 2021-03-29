@@ -2,7 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+/*
+Problem 18:
+Suppose you have n doctors, each of which are free for a certain number of hours per day,
+and  m  patients, each of whom needs to be seen for a certain number of hours. Write a
+function that determines whether it's possible for all the patients to be scheduled so that
+none of the doctors spends more time than they have available. Better yet, tell us which
+people should see which doctors.
+*/
 namespace Day15
 {
     class PatientSchedulerProblem1

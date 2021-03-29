@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 /*
 Problem 16: 
 A shrinkable word is a word that can be reduced down to the empty string by deleting
@@ -11,7 +10,6 @@ startling -> starting -> staring -> string -> sting -> sing -> sin -> in -> i ->
 Write a function that accepts as input a string and a set of all the words in English, then
 reports whether the input word is shrinkable.
 */
-
 namespace Day15
 {
     class ShrinkableWordsProblem1

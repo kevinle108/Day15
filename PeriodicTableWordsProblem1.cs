@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 /*
 Problem 17: 
 Some words can be spelled out using only element symbols from the periodic table. For example, the world “canine” can be spelled as  CaNiNe  (calcium, nickel, neon). Some words,
@@ -10,7 +9,6 @@ element symbols in the periodic table, then returns whether the word can or cann
 spelled using element symbols. Even better, if the string can be spelled this way, return
 the string with the capitalization changed to reflect that spelling
 */
-
 namespace Day15
 {
     class PeriodicTableWordsProblem1
