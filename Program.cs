@@ -7,7 +7,8 @@ namespace Day15
     {
         static void Main(string[] args)
         {
-            ShrinkableWords();
+            //ShrinkableWords();
+            PeriodicTableWords();
         }
 
         // Problem 16
@@ -32,6 +33,32 @@ namespace Day15
             // solve the problem
             p1.Solve();
             p2.Solve();
+        }
+        // Problem 17
+        static void PeriodicTableWords()
+        {
+            // initialize the needed variables
+            string word1 = "canine";
+            string word2 = "procrastinate";
+            string word3 = "computer";
+
+            // create instance of the Class
+            var p1_1 = new PeriodicTableWordsProblem1(word1);
+            var p1_2 = new PeriodicTableWordsProblem1(word2);
+            var p1_3 = new PeriodicTableWordsProblem1(word3);
+
+            //var p2_1 = new PeriodicTableWordsProblem1(word1);
+            //var p2_2 = new PeriodicTableWordsProblem1(word2);
+            //var p2_3 = new PeriodicTableWordsProblem1(word3);
+
+            // solve the problem
+            p1_1.Solve();
+            p1_2.Solve();
+            p1_3.Solve();
+
+            //p2_1.Solve();
+            //p2_2.Solve();
+            //p2_3.Solve();
         }
     }
 }

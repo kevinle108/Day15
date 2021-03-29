@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 /*
-Problem 16. A shrinkable word is a word that can be reduced down to the empty string by deleting
+Problem 16: 
+A shrinkable word is a word that can be reduced down to the empty string by deleting
 one letter at a time such that, at each stage, the remaining string is a word. For example,
 the word “startling” is shirnkable because of this sequence of words:
 startling -> starting -> staring -> string -> sting -> sing -> sin -> in -> i -> (empty)
@@ -15,12 +16,14 @@ namespace Day15
 {
     class ShrinkableWordsProblem2
     {
+        string _originalWord;
         string _word;
         List<string> _vocab;
         Stack<string> _result;
 
         public ShrinkableWordsProblem2(string word, List<string> vocab)
         {
+            _originalWord = word;
             _word = word;
             _vocab = vocab;
             _result = new Stack<string>();
@@ -29,13 +32,12 @@ namespace Day15
         public void Solve()
         {
             Console.WriteLine("Solution by ShrinkableWordsProblem2:");
-            // runs the actual solver function
             if (ShrinkableWords())
             {
-                Console.WriteLine("   Yes, your word is shrinkable:");
+                Console.WriteLine($"   Yes, your word {_originalWord} is shrinkable.");
                 PrintResult();
             }
-            else Console.WriteLine("   No, your word is not shrinkable.");
+            else Console.WriteLine($"   No, your word {_originalWord} is not shrinkable.");
             Console.WriteLine();
         }
 
@@ -61,7 +63,8 @@ namespace Day15
         public void PrintResult()
         {
             string txt = "";
-            for (int i = 0; i < _result.Count; i++)
+            int numOfLines = _result.Count;
+            for (int i = 0; i < numOfLines; i++)
             {
                 txt = "   " + _result.Pop() + "\n" + txt;
             }
