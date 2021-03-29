@@ -7,8 +7,8 @@ namespace Day15
     {
         static void Main(string[] args)
         {
-            //ShrinkableWords();
-            //PeriodicTableWords();
+            ShrinkableWords();
+            PeriodicTableWords();
             PatientScheduler();
         }
 
@@ -69,7 +69,6 @@ namespace Day15
 
             p1.Solve();
             p2.Solve();
-
         }
     }
 }
