@@ -44,28 +44,17 @@ namespace Day15
 
         bool FindFrequency()
         {
-            if (_curIndex == _towers.Count) return true;            
-            Position curTower = _towers[_curIndex];
-            int possibleFrequency = _numOfFreq;
-            for (int i = 0; i < _curIndex; i++)
-            {
-                double d = _towers[i].DistanceFrom(curTower);
-                Console.WriteLine($"Tower {_curIndex} from Tower {i}: {d}");
-                if (d <= _distance) 
-                {
-                    possibleFrequency--;
-                    Console.WriteLine($"   Found within Range, possibleFrequency {possibleFrequency} left");
-                }                
-            }
-            if (possibleFrequency == 0) 
+            if (_curIndex == _towers.Count) return true;
+
+            if (!AllOutOfRange(_curIndex))
             {
                 _numOfFreq++;
-            }                
-            else 
+            }
+            else
             {
                 for (int f = 1; f <= _numOfFreq; f++)
                 {
-                    _result.Add($"Tower {_curIndex} gets Frequency {possibleFrequency}");
+                    _result.Add($"Tower {_curIndex} gets Frequency {f}");
                     _curIndex++;
                     if (FindFrequency()) return true;
                     else
@@ -78,6 +67,22 @@ namespace Day15
                 FindFrequency();
             }
             return false;
+        }
+
+        private bool AllOutOfRange(int curIndex)
+        {
+            int possibleFrequency = _numOfFreq;
+            Position curTower = _towers[_curIndex];
+            for (int i = 0; i < _curIndex; i++)
+            {
+                double d = _towers[i].DistanceFrom(curTower);
+                Console.WriteLine($"Tower {curIndex} to Tower {i}: {d}");                
+                if (d <= _distance)
+                {
+                    possibleFrequency--;
+                }
+            }
+            return possibleFrequency != 0;
         }
 
         void PrintDistances()
