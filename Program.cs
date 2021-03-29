@@ -64,9 +64,11 @@ namespace Day15
             int[] doctorHours = { 7, 2, 4, 2 };
             int[] patientHours = { 1, 2, 5, 3, 1, 2, 1 };
 
-            var p1_1 = new PatientSchedulerProblem1(doctorHours, patientHours);
+            var p1 = new PatientSchedulerProblem1(doctorHours, patientHours);
+            var p2 = new PatientSchedulerProblem2(doctorHours, patientHours);
 
-            p1_1.Solve();
+            p1.Solve();
+            p2.Solve();
 
         }
     }
