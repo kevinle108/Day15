@@ -16,6 +16,9 @@ namespace Day15
     {
         List<Position> _towers;
         double _distance;
+        int _numOfFreq;
+        List<string> _result;
+        int _curIndex;
 
         public RadioTowersProblem1(double[,] towers, double d)
         {
@@ -24,20 +27,57 @@ namespace Day15
             {
                 _towers.Add(new Position(towers[i, 0], towers[i, 1]));
             }
-            _distance = d;
+            _distance = d;            
+            _numOfFreq = 1;
+            _result = new List<string>();
+            _curIndex = 0;
+
         }
 
         public void Solve() 
         {
             Console.WriteLine("Solution by RadioTowersProblem1:");
             FindFrequency();
+            _result.ForEach(x => Console.WriteLine(x));
             Console.WriteLine();
         }
 
-        public int FindFrequency()
+        bool FindFrequency()
         {
-            PrintDistances();
-            return 1;
+            if (_curIndex == _towers.Count) return true;            
+            Position curTower = _towers[_curIndex];
+            int possibleFrequency = _numOfFreq;
+            for (int i = 0; i < _curIndex; i++)
+            {
+                double d = _towers[i].DistanceFrom(curTower);
+                Console.WriteLine($"Tower {_curIndex} from Tower {i}: {d}");
+                if (d <= _distance) 
+                {
+                    possibleFrequency--;
+                    Console.WriteLine($"   Found within Range, possibleFrequency {possibleFrequency} left");
+                }                
+            }
+            if (possibleFrequency == 0) 
+            {
+                _numOfFreq++;
+            }                
+            else 
+            {
+                for (int f = 1; f <= _numOfFreq; f++)
+                {
+                    _result.Add($"Tower {_curIndex} gets Frequency {possibleFrequency}");
+                    _curIndex++;
+                    if (FindFrequency()) return true;
+                    else
+                    {
+                        _result.RemoveAt(_result.Count - 1);
+                        _curIndex--;
+                    }
+                }
+                _curIndex++;
+                FindFrequency();
+            }
+            return false;
         }
 
         void PrintDistances()
