@@ -46,7 +46,7 @@ namespace Day15
         {
             if (_curIndex == _towers.Count) return true;
 
-            if (!AllOutOfRange(_curIndex))
+            if (NoAvailableFreq(_curIndex))
             {
                 _numOfFreq++;
             }
@@ -69,20 +69,20 @@ namespace Day15
             return false;
         }
 
-        private bool AllOutOfRange(int curIndex)
+        private bool NoAvailableFreq(int curIndex)
         {
             int possibleFrequency = _numOfFreq;
             Position curTower = _towers[_curIndex];
             for (int i = 0; i < _curIndex; i++)
             {
                 double d = _towers[i].DistanceFrom(curTower);
-                Console.WriteLine($"Tower {curIndex} to Tower {i}: {d}");                
+                //Console.WriteLine($"Tower {curIndex} to Tower {i}: {d}");                
                 if (d <= _distance)
                 {
                     possibleFrequency--;
                 }
             }
-            return possibleFrequency != 0;
+            return possibleFrequency == 0;
         }
 
         void PrintDistances()

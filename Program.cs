@@ -10,7 +10,8 @@ namespace Day15
             //ShrinkableWords();
             //PeriodicTableWords();
             //PatientScheduler();
-            RadioTowers();
+            //RadioTowers();
+            CellTowers();
         }
 
         // Problem 16
@@ -92,6 +93,27 @@ namespace Day15
 
             p1.Solve();
 
+        }
+
+        //class
+        static void CellTowers()
+        {
+            double[,] towers = {
+                { 11, 10 },
+                { 16, 16 },
+                { 3, 15 },
+                { 6, 17 },
+                { 10, 5 },
+                { 14, 11 },
+                { 5, 19 },
+                { 15, 18 },
+                { 17, 20 },
+                { 18, 22}
+             };
+            double d = 6.0;
+            int f = 3;
+            var p1 = new CellTowerProblem(towers, d, f);
+            p1.Solve();
         }
     }
 }
