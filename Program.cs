@@ -10,7 +10,7 @@ namespace Day15
             //ShrinkableWords();
             //PeriodicTableWords();
             //PatientScheduler();
-            //RadioTowers();
+            RadioTowers();
             CellTowers();
         }
 

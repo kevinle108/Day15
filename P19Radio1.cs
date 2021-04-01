@@ -17,8 +17,7 @@ namespace Day15
         List<Position> _towers;
         double _distance;
         int _numOfFreq;
-        List<string> _result;
-        int _curIndex;
+        List<int> _result;
 
         public RadioTowersProblem1(double[,] towers, double d)
         {
@@ -28,61 +27,63 @@ namespace Day15
                 _towers.Add(new Position(towers[i, 0], towers[i, 1]));
             }
             _distance = d;            
-            _numOfFreq = 1;
-            _result = new List<string>();
-            _curIndex = 0;
-
+            _numOfFreq = 0;
+            _result = new List<int>();
         }
 
         public void Solve() 
         {
             Console.WriteLine("Solution by RadioTowersProblem1:");
-            FindFrequency();
-            _result.ForEach(x => Console.WriteLine(x));
+            for (int i = 0; i <= _towers.Count; i++)
+            {
+                _numOfFreq = i;
+                if (FindFrequency()) break;
+                _result = new List<int>();
+            }
+            Console.WriteLine($" {_numOfFreq} frequencies required:");
+            PrintResult();
             Console.WriteLine();
         }
 
         bool FindFrequency()
         {
-            if (_curIndex == _towers.Count) return true;
-
-            if (NoAvailableFreq(_curIndex))
+            int towerIndex = _result.Count;
+            if (towerIndex == _towers.Count) return true;
+            for (int freqIndex = 0; freqIndex < _numOfFreq; freqIndex++)
             {
-                _numOfFreq++;
-            }
-            else
-            {
-                for (int f = 1; f <= _numOfFreq; f++)
+                if (IsValidFreq(freqIndex))
                 {
-                    _result.Add($"Tower {_curIndex} gets Frequency {f}");
-                    _curIndex++;
+                    _result.Add(freqIndex);
                     if (FindFrequency()) return true;
-                    else
-                    {
-                        _result.RemoveAt(_result.Count - 1);
-                        _curIndex--;
-                    }
+                    _result.RemoveAt(_result.Count - 1);
                 }
-                _curIndex++;
-                FindFrequency();
             }
             return false;
         }
 
-        private bool NoAvailableFreq(int curIndex)
+        private bool IsValidFreq(int freq)
         {
-            int possibleFrequency = _numOfFreq;
-            Position curTower = _towers[_curIndex];
-            for (int i = 0; i < _curIndex; i++)
+            for (int i = 0; i < _result.Count; i++)
             {
-                double d = _towers[i].DistanceFrom(curTower);
-                //Console.WriteLine($"Tower {curIndex} to Tower {i}: {d}");                
-                if (d <= _distance)
-                {
-                    possibleFrequency--;
-                }
+                if (_result[i] == freq && TowersTooClose(_towers[i], _towers[_result.Count])) return false;
             }
-            return possibleFrequency == 0;
+             return true;
+        }
+
+        private bool TowersTooClose(Position p1, Position p2)
+        {
+            double dx = p1.X - p2.X;
+            double dy = p1.Y - p2.Y;
+            return Math.Sqrt(dx*dx + dy*dy) <= _distance;
+        }
+
+        private void PrintResult()
+        {
+            for (int i = 0; i < _result.Count; i++)
+            {
+                Console.WriteLine($"  Tower {i+1} gets Frequency {_result[i]+1}");
+            }
+            Console.WriteLine();
         }
 
         void PrintDistances()
